@@ -6,11 +6,18 @@
     </p>
     <p>Count: {{ counter.count }}</p>
     <p>Double Count: {{ counter.doubleCount }}</p>
-    <button @click="counter.increment()">Increment</button>
+    <Button @click="counter.increment()">Increment</Button>
+
+    <Menubar></Menubar>
   </div>
 </template>
 
 <script setup lang="ts">
+
+import Menubar from 'primevue/menubar';
+
+
+import Button from "primevue/button"
 import { defineProps } from 'vue';
 import { useCounterStore } from '../stores/counter'; // Import the store
 
@@ -24,8 +31,10 @@ const counter = useCounterStore(); // Get the store instance
 <style scoped>
 h1 {
   font-size: 2.5em;
-  color: #42b983; /* Vue Green */
+  color: #42b983;
+  /* Vue Green */
 }
+
 p {
   font-size: 1.2em;
 }
