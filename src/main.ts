@@ -3,7 +3,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 
 // general imports
-import '@/styles/typography.css';
+import '@/styles/typography.scss';
 
 // Pinia setup
 import { createPinia } from 'pinia';
@@ -15,6 +15,8 @@ import router from './router'; // Import the router
 import Aura from '@primeuix/themes/aura'; // lara, material, nora
 import 'primeicons/primeicons.css';
 import PrimeVue from 'primevue/config';
+// import 'primevue/resources/themes/saga-blue/theme.css';
+// import 'primevue/resources/primevue.min.css';
 
 // app declaration
 const app = createApp(App);
