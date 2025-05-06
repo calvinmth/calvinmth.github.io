@@ -11,7 +11,9 @@
 </template>
 
 <script setup lang="ts">
+import gsap from 'gsap';
 import Button from "primevue/button";
+import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -19,6 +21,12 @@ const router = useRouter();
 function navigateTo(path: string) {
   router.push(path);
 }
+
+onMounted(() => {
+  gsap.from('.home h1', { duration: 1, y: -50, opacity: 0, ease: 'power2.out' });
+  gsap.from('.home p', { duration: 1, y: 50, opacity: 0, ease: 'power2.out', stagger: 0.3 });
+  gsap.from('.links', { duration: 1, scale: 0.8, opacity: 0, ease: 'back.out(1.7)', delay: 0.5 });
+});
 </script>
 
 <style scoped>
