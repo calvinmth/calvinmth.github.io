@@ -1,6 +1,8 @@
+import AboutView from '@/views/AboutView.vue';
+import ContactView from '@/views/ContactView.vue';
+import HomeView from '@/views/HomeView.vue';
+import SnakeView from '@/views/SnakeView.vue';
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
-import AboutView from '../views/AboutView.vue'; // Create this file later
-import HomeView from '../views/HomeView.vue'; // Create this file later
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,6 +14,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/about',
     name: 'about',
     component: AboutView,
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: ContactView,
+  },
+  {
+    path: '/snake',
+    name: 'snake',
+    component: SnakeView,
   },
 ];
 

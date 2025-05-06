@@ -1,5 +1,14 @@
 <template>
-  <Menubar :model="items" />
+  <Menubar :model="items">
+    <template #start>
+      <img src="/src/assets/calvinmth.jpg" alt="Logo" id="logo" @click="goTo('/')" />
+    </template>
+    <template #end>
+      <button @click="toggleTheme" id="theme-toggle">
+        {{ isDarkTheme ? '🌙' : '☀️' }}
+      </button>
+    </template>
+  </Menubar>
 </template>
 
 <script setup>
@@ -9,9 +18,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 function goTo(routeName) {
-  console.log('hehe');
-  
-  router.push(routeName)
+  router.push(routeName);
 }
 
 const items = ref([
@@ -26,40 +33,37 @@ const items = ref([
     command: () => goTo('about')
   },
   {
-    label: 'Projects',
-    icon: 'pi pi-search',
-    items: [
-      {
-        label: 'Components',
-        icon: 'pi pi-bolt'
-      },
-      {
-        label: 'Blocks',
-        icon: 'pi pi-server'
-      },
-      {
-        label: 'UI Kit',
-        icon: 'pi pi-pencil'
-      },
-      {
-        label: 'Templates',
-        icon: 'pi pi-palette',
-        items: [
-          {
-            label: 'Apollo',
-            icon: 'pi pi-palette'
-          },
-          {
-            label: 'Ultima',
-            icon: 'pi pi-palette'
-          }
-        ]
-      }
-    ]
+    label: 'Snake Game',
+    icon: 'pi pi-th-large',
+    command: () => goTo('snake')
   },
   {
     label: 'Contact',
-    icon: 'pi pi-envelope'
+    icon: 'pi pi-envelope',
+    command: () => goTo('contact')
   }
 ]);
+
+const isDarkTheme = ref(false);
+function toggleTheme() {
+  isDarkTheme.value = !isDarkTheme.value;
+  localStorage.setItem('isDarkTheme', isDarkTheme)
+  // document.body.classList.toggle('dark-theme', isDarkTheme.value);
+}
 </script>
+
+<style scoped>
+#logo {
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+</style>
